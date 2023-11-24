@@ -4,7 +4,7 @@ import commonjs from '@rollup/plugin-commonjs'
 import rollupTypescript from 'rollup-plugin-typescript2'
 import babel from '@rollup/plugin-babel'
 import { DEFAULT_EXTENSIONS } from '@babel/core'
-import { terser } from 'rollup-plugin-terser'
+import terser from '@rollup/plugin-terser';
 
 // 读取 package.json 配置
 import pkg from './package.json'
@@ -12,7 +12,7 @@ import pkg from './package.json'
 const env = process.env.NODE_ENV
 // umd 模式的编译结果文件输出的全局变量名称
 const name = 'RollupTsTemplate'
-const config = { 
+const config = {
   // 入口文件，src/index.ts
   input: path.resolve(__dirname, 'src/index.ts'),
   // 输出文件
@@ -62,13 +62,6 @@ const config = {
 
 // 若打包正式环境，压缩代码
 if (env === 'production') {
-  config.plugins.push(terser({
-    compress: {
-      pure_getters: true,
-      unsafe: true,
-      unsafe_comps: true,
-      warnings: false
-    }
-  }))
+  config.plugins.push(terser())
 }
 export default config

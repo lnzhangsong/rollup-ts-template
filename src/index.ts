@@ -1,3 +1,3 @@
-export function sayHelloWorld () {
-  console.log('hello world')
+export function sayHelloWorld() {
+	return 'hello world'
 }
