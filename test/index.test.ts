@@ -1,4 +1,5 @@
-const { sayHelloWorld } = require('../dist/index.js')
+import { expect, test } from 'vitest'
+import { sayHelloWorld } from '../dist'
 
 test('测试', () => {
 	const hello = sayHelloWorld()
