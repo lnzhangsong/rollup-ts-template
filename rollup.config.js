@@ -2,8 +2,6 @@ import path from 'path'
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import rollupTypescript from 'rollup-plugin-typescript2'
-import babel from '@rollup/plugin-babel'
-import { DEFAULT_EXTENSIONS } from '@babel/core'
 import terser from '@rollup/plugin-terser';
 
 // 读取 package.json 配置
@@ -45,18 +43,6 @@ const config = {
     commonjs(),
     // rollup 编译 typescript
     rollupTypescript(),
-    // babel 配置
-    babel({
-      // 编译库使用 runtime
-      babelHelpers: 'runtime',
-      // 只转换源代码，不转换外部依赖
-      exclude: 'node_modules/**',
-      // babel 默认不支持 ts 需要手动添加
-      extensions: [
-        ...DEFAULT_EXTENSIONS,
-        '.ts',
-      ],
-    }),
   ]
 }
 

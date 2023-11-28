@@ -1,6 +1,6 @@
 {
 	"name": "rollup-starter-lib-test",
-	"version": "1.0.3",
+	"version": "1.0.0",
 	"description": "",
 	"main": "./dist/index.js",
 	"module": "./dist/index.esm.js",
@@ -23,7 +23,9 @@
 		"@rollup/plugin-commonjs": "^21.1.0",
 		"@rollup/plugin-node-resolve": "^13.3.0",
 		"@rollup/plugin-terser": "^0.4.4",
+		"@vitest/coverage-v8": "^0.34.6",
 		"cross-env": "^7.0.3",
+		"jsdom": "^23.0.0",
 		"prettier": "^3.1.0",
 		"rimraf": "^3.0.2",
 		"rollup": "^2.79.1",
