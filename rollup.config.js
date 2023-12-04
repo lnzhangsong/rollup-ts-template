@@ -3,9 +3,15 @@ import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import rollupTypescript from 'rollup-plugin-typescript2'
 import terser from '@rollup/plugin-terser';
+import babel from '@rollup/plugin-babel'
+import { dirname } from "node:path"
+import { fileURLToPath } from "node:url"
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // 读取 package.json 配置
-import pkg from './package.json'
+import pkg from './package.json' assert { type: "json" };
 // 当前运行环境，可通过 cross-env 命令行设置
 const env = process.env.NODE_ENV
 // umd 模式的编译结果文件输出的全局变量名称
@@ -43,6 +49,11 @@ const config = {
     commonjs(),
     // rollup 编译 typescript
     rollupTypescript(),
+    babel({
+      babelHelpers: 'bundled',
+      extensions: ['.ts', '.tsx', '.js', '.jsx', '.es6', '.es', '.mjs', '.vue'],
+      exclude: ["node_modules/**"],
+    })
   ]
 }
 
